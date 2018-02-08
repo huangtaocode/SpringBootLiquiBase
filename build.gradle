@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+ext {
+    gradleWrapperVersion = '3.5'
+}
+
+jar{
+    baseName = 'SpringBootLiquiBase'
+    version = 'latest'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'com.google.guava:guava:21.0'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+    compile 'mysql:mysql-connector-java'
+    runtime 'org.liquibase:liquibase-core'
+    testCompile 'junit:junit'
+}
+
+task wrapper(type: Wrapper){
+    gradleWrapperVersion = gradleWrapperVersion
+}
+
+
+
